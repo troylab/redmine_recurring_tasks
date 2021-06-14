@@ -23,3 +23,10 @@ en:
   settings_use_anonymous_user: Use anonymous user while copying issues
   settings_copied_issue_status: Copied issues status
   settings_copy_from_original: Copy from original issue
+
+  time_zone: Time zone
+  current_time: Current time
+  schedule_start_at: Schedule start date
+  schedule_end_at: Schedule end date
+  seq_no_start: Sequence number initail vaue
+  seq_prefix: Sequence number prefix

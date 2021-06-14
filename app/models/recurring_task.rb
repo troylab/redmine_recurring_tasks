@@ -94,6 +94,7 @@ class RecurringTask < ActiveRecord::Base
 
   # @return [Issue] copied issue
   def copy_issue(associations = [])
+    #TODO: 加上 seq_no_start, seq_prefix
     return if issue.project.archived? || issue.project.closed?
 
     settings = Setting.find_by(name: :plugin_redmine_recurring_tasks)&.value || {}
@@ -143,6 +144,7 @@ class RecurringTask < ActiveRecord::Base
 
   # @return [Boolean] boolean result of copy issue and save of schedule last try timestamp
   def execute(associations = nil)
+    #NOTE: 這邊是執行建立 new issue
     self.last_try_at = Time.now
     copy_issue(associations) && save
   end
@@ -153,6 +155,7 @@ class RecurringTask < ActiveRecord::Base
   end
 
   def time_came?(current_time = Time.now)
+    #TODO: 這邊是判斷時間的, true 才會被執行, 加上判斷 schedule_start_at, schedule_end_at
     utc_offset = current_time.utc_offset / 60 / 60
     utc_offset -= 1 if time.in_time_zone(utc_offset).dst?
     time.in_time_zone(utc_offset).strftime('%H%M%S').to_i <= current_time.strftime('%H%M%S').to_i &&
