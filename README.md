@@ -1,11 +1,4 @@
-[![Rate at redmine.org](http://img.shields.io/badge/rate%20at-redmine.org-blue.svg?style=flat)](http://www.redmine.org/plugins/redmine_recurring_tasks)
-# Redmine Recurring Tasks
-
-[![Build Status](https://travis-ci.org/southbridgeio/redmine_recurring_tasks.svg?branch=master)](https://travis-ci.org/southbridgeio/redmine_recurring_tasks)
-
-[Русская версия](README-RU.md)
-
-Plugin for creating scheduled tasks from templates.
+Fork from https://github.com/southbridgeio/redmine_recurring_tasks
 
 # Installation
 
@@ -15,7 +8,7 @@ Plugin for creating scheduled tasks from templates.
 
 ```
 cd {REDMINE_ROOT}
-git clone https://github.com/southbridgeio/redmine_recurring_tasks.git plugins/redmine_recurring_tasks
+git clone https://github.com/troylab/redmine_recurring_tasks.git plugins/redmine_recurring_tasks
 bundle install
 bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 ```
