@@ -6,8 +6,8 @@ zh-TW:
   template: 週期項目範本
 
   month: 月份
-  week_day: 天(每月)
-  month_day: 天(每週)
+  week_day: 天(每週)
+  month_day: 天(每月)
   last_day: 月底
 
   note: 您可以選擇一個月中的某天或一周中的某天，但不能同時選擇兩者。另外，若要每月底執行，請選擇「月底」，如果選擇31，當該月的沒有31日時則該月份就不會被執行。
@@ -28,5 +28,8 @@ zh-TW:
   current_time: 目前時間
   schedule_start_at: 排程啟始日期
   schedule_end_at: 排程結束日期
-  seq_no_start: 序號啟始編號
+  use_seq: 啟用自動編號
+  seq_no_start: 序號啟始數字
   seq_prefix: 序號前置詞(prefix)
+
+  use_seq_note: "* 如果有啟用自動編號，則透過排程建立的項目主旨會改為: {原主旨}_{序號前置詞}{自動編號}。"

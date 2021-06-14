@@ -102,6 +102,13 @@ class RecurringTask < ActiveRecord::Base
     issue.deep_clone(include: associations, except: %i[parent_id root_id lft rgt created_on updated_on closed_on]) do |original, copy|
       case original
       when Issue
+
+        if use_seq
+          # 修改 subject , 加上序號及prefix
+          copy.subject = "#{copy.subject}_#{seq_prefix}#{seq_no_start}"
+          self.seq_no_start = seq_no_start + 1
+        end
+
         copy.init_journal(original.author)
         new_author =
           if settings['use_anonymous_user']
@@ -115,7 +122,7 @@ class RecurringTask < ActiveRecord::Base
         copy.custom_field_values = original.custom_field_values.inject({}) { |h, v| h[v.custom_field_id] = v.value; h }
         copy.author_id = new_author.id
         copy.tracker_id = original.tracker_id
-        copy.parent_issue_id = original.parent_id
+        copy.parent_issue_id = original.id
         copy.status_id =
           case settings['copied_issue_status']
           when nil
