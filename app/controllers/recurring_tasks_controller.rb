@@ -45,7 +45,7 @@ class RecurringTasksController < ApplicationController
   def recurring_task_params
     params.require(:recurring_task).permit(:sunday, :monday, :tuesday, :wednesday,
                                            :thursday, :friday, :saturday, :time, :tracker_id, :client_run_type,
-                                           :schedule_start_at, :schedule_end_at, :time_zone_offset, :use_seq, :seq_no_start, :seq_prefix,
+                                           :child_of_original, :use_seq, :seq_no_start, :seq_prefix,
                                            months: [], month_days: [])
   end
 

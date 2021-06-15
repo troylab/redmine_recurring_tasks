@@ -54,18 +54,8 @@
             </p>
             <%= l('current_time') %>: <%= Time.now %>
             <p>
-              <label>
-              <%= l('schedule_start_at') %>
-              </label>
-              <%= f.date_field(:schedule_start_at) %>
-              <%= calendar_for('recurring_task_schedule_start_at') %>
-            </p>
-            <p>
-              <label>
-              <%= l('schedule_end_at') %>
-              </label>
-              <%= f.date_field(:schedule_end_at) %>
-              <%= calendar_for('recurring_task_schedule_end_at') %>
+              <%= l('child_of_original') %>
+              <%= f.check_box :child_of_original %>
             </p>
             <p>
               <%= l('use_seq') %>

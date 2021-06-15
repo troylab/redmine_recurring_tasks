@@ -97,12 +97,15 @@ class RecurringTask < ActiveRecord::Base
     #TODO: 加上 seq_no_start, seq_prefix
     return if issue.project.archived? || issue.project.closed?
 
+    logger.info "copy issue from: id #{issue.id}"
+
     settings = Setting.find_by(name: :plugin_redmine_recurring_tasks)&.value || {}
 
     issue.deep_clone(include: associations, except: %i[parent_id root_id lft rgt created_on updated_on closed_on]) do |original, copy|
       case original
       when Issue
 
+        # 是否加上自動編號
         if use_seq
           # 修改 subject , 加上序號及prefix
           copy.subject = "#{copy.subject}_#{seq_prefix}#{seq_no_start}"
@@ -122,7 +125,14 @@ class RecurringTask < ActiveRecord::Base
         copy.custom_field_values = original.custom_field_values.inject({}) { |h, v| h[v.custom_field_id] = v.value; h }
         copy.author_id = new_author.id
         copy.tracker_id = original.tracker_id
-        copy.parent_issue_id = original.id
+
+        # 是否建立為 subtask
+        if child_of_original
+          copy.parent_issue_id = original.id
+        else
+          copy.parent_issue_id = original.parent_id
+        end
+
         copy.status_id =
           case settings['copied_issue_status']
           when nil

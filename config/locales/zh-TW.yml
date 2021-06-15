@@ -26,8 +26,7 @@ zh-TW:
 
   time_zone: 時區
   current_time: 目前時間
-  schedule_start_at: 排程啟始日期
-  schedule_end_at: 排程結束日期
+  child_of_original: 是否建立為子項目
   use_seq: 啟用自動編號
   seq_no_start: 序號啟始數字
   seq_prefix: 序號前置詞(prefix)

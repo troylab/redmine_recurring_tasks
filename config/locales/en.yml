@@ -26,8 +26,7 @@ en:
 
   time_zone: Time zone
   current_time: Current time
-  schedule_start_at: Schedule start date
-  schedule_end_at: Schedule end date
+  child_of_original: To create as a subtask
   use_seq: Enable automatic numbering
   seq_no_start: Sequence number initail vaue
   seq_prefix: Sequence number prefix
